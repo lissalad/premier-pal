@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-#Users & Collections 
+client = MongoClient()
+db = client.Premiere-PAL
+# users = db.users
+collections = db.collections
+movies = db.movies
 
 @app.route('/')
 def home():
