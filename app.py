@@ -14,4 +14,3 @@ def collections():
 if __name__ == "__main__":
   app.run(debug=True)
 
-print("lissa says she climbs development trees")
