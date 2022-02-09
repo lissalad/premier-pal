@@ -1,20 +1,33 @@
-<header class="w-full bg-red-600 text-5xl flex flex-col px-4 py-2">
-  <div class="flex flex-row w-full justify-between items-center">
-  <h1 class="text-4xl">Premier Pal</h1>
-    <nav class="flex ">
-      <a class="text-sm">Collections</a>
-    </nav>
+<header class="w-full bg-red-600/80 backdrop-blur-lg flex flex-col fixed text-white p-4 pt-6 items-center space-y-5 md:flex-row">
+<!-- 
+  <div class="">
+    <img src="./static/images/menu.svg" width="30px"/>
+  </div> -->
+
+  <div class="flex flex-row items-end justify-left whitespace-nowrap md:justify-left">
+    <h1 class="text-5xl font-['showtime'] mb-2">Premiere
+      <span class="text-5xl bold font-['pal']">pal</span>
+    </h1>
   </div>
 
-    <div class="flex items-center text-xs flex flex-row mt-2 pb-2">
-      <label class="" for="search">Search Films</label>
-      <input
-        class="rounded-md mx-2"
-        id="search"
-        name="search"
-        value=""
-        required
-      />
-  </div>  
 
+
+    <nav class="flex flex-row text-xl space-x-2 text-sm font-['emeraldgrey'] justify-between w-full md:flex-row-reverse md:w-fit md:ml-auto">
+      <div class="flex items-center flex flex-row md:ml-12">
+        <label class="font-['emeraldgrey'] mx-2" for="search">Search</label>
+        <input
+          class="rounded-md w-24 md:w-full"
+          id="search"
+          name="search"
+          value=""
+          required
+        />
+      </div>
+      <div class="flex flex-row space-x-4 md:space-x-10">
+        <p class="">Collections</p>
+        <p class="">User</p>
+      </div>  
+        
+        
+    </nav>
 </header>

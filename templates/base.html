@@ -17,10 +17,28 @@
     <title>Premiere Pal</title>
   </head>
   <body class="flex flex-col">
-    {% include 'partials/header.html' %}
-    <main>
+    <div class="w-full bg-red-600/80 backdrop-blur-lg h-[136px] md:h-[101px]"></div>
+      {% include 'partials/header.html' %}
+    <main class="mt-5">
       <div class="">{% block content %}{% endblock %}</div>
     </main>
     {% include 'partials/footer.html' %}
   </body>
+  <style>
+      @font-face {
+        font-family: "showtime";
+        src: url("/static/fonts/showtime.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: "pal";
+        src: url("/static/fonts/pal.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: "emeraldgrey";
+        src: url("/static/fonts/emeraldgrey.woff") format("woff");
+      }
+
+  </style>
 </html>
