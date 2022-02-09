@@ -17,9 +17,8 @@
     <title>Premiere Pal</title>
   </head>
   <body class="flex flex-col">
-    <div class="w-full h-[6em] bg-red-600/80">
-    </div>
-    {% include 'partials/header.html' %}
+    <div class="w-full bg-red-600/80 backdrop-blur-lg h-[136px] md:h-[101px]"></div>
+      {% include 'partials/header.html' %}
     <main class="mt-5">
       <div class="">{% block content %}{% endblock %}</div>
     </main>
