@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 from dotenv import load_dotenv
+from bson.objectid import ObjectId
 import requests
 import os
 
@@ -34,6 +35,11 @@ def collections_submit():
   }
   movie_colls.insert_one(collection)
   return redirect(url_for('collections'))
+
+@app.route('/collections/<collection_id>')
+def collection_show(collection_id):
+  collection = movie_colls.find_one({'_id': ObjectId(collection_id)})
+  return render_template('collection_show.html', collection=collection)
 
 # Overview
 movie = {'title': 'Frozen', 'overview': 'abcd', 'release_date': 'November 27, 2013', 'poster_path': '/1eQ3c443YwXz1Xq0FZ24qrJBKyd.jpg', 'genre_ids': '[53, 80]'}
