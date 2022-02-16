@@ -10,9 +10,14 @@ app = Flask(__name__)
 host = os.environ.get("DB_URL")
 client = MongoClient()
 db = client.Premiere_PAL
+<<<<<<< HEAD
 
 # users = db.users
 movie_coll = db.movie_coll
+=======
+# users = db.users
+movie_colls = db.movie_coll
+>>>>>>> 64888560ef3f4bab7084d22c29fd8de1594c856d
 movies = db.movies
 
 @app.route('/')
@@ -21,9 +26,29 @@ def home():
 
 @app.route('/collections')
 def collections():
+<<<<<<< HEAD
   return render_template('collections.html')
 
 movie = {'title': 'Frozen', 'overview': 'abcd', 'release_date': 'November 27, 2013', 'poster_path': '/1eQ3c443YwXz1Xq0FZ24qrJBKyd.jpg', 'genre_ids': [53, 80]}
+=======
+  return render_template('collections.html', collections=movie_colls.find())
+
+@app.route('/collections/new')
+def collections_new():
+  return render_template('new-collection.html', collection ={})
+
+@app.route('/collections', methods=['POST'])
+def collections_submit():
+  collection = {
+    'title': request.form.get('title'),
+    'description': request.form.get('description')
+  }
+  movie_colls.insert_one(collection)
+  return redirect(url_for('collections'))
+
+# Overview
+movie = {'title': 'Frozen', 'overview': 'abcd', 'release_date': 'November 27, 2013', 'poster_path': '/1eQ3c443YwXz1Xq0FZ24qrJBKyd.jpg', 'genre_ids': '[53, 80]'}
+>>>>>>> 64888560ef3f4bab7084d22c29fd8de1594c856d
 
 @app.route('/overview')
 def overview():
