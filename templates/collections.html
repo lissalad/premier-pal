@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <h2>collections</h2>
   {% for collection in collections %}
-  <div class="">
-    <h4 class=""><a href="">{{ collection.title }}</a></h4>
+  <div class=""><a href="/collections/{{ collection._id }}">
+    <h4 class="">{{ collection.title }}</h4>
     <p>{{ collection.description }}</p>
-  </div>
+  </a></div>
   {% endfor %}
 {% endblock %}
