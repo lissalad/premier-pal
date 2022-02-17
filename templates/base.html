@@ -16,10 +16,17 @@
     </script>
     <title>Premiere Pal</title>
   </head>
-  <body class="flex flex-col">
-    <div class="w-full bg-red-600/80 backdrop-blur-lg h-[136px] md:h-[101px]"></div>
+  <body class="flex flex-col bg-black text-black">
+    <div class="w-full bg-red-600/80 backdrop-blur-lg h-[70.27px] md:h-[94.27px]"></div>
       {% include 'partials/header.html' %}
-    <main class="mt-5 flex flex-col mx-4">
+    <main class="py-5 flex flex-col bg-gray-300 px-4 md:mx-16">
+      <div class="flex flex-col">
+        <!-- <a href="/collections/new">new collection</a> -->
+        <!-- <a href="/overview">overview</a> -->
+        <!-- <a href="/collections/new">new collection</a> -->
+        <!-- <a href="/collections/new">new collection</a> -->
+
+      </div>
       <div class="">{% block content %}{% endblock %}</div>
     </main>
     {% include 'partials/footer.html' %}
@@ -40,5 +47,8 @@
         src: url("/static/fonts/emeraldgrey.woff") format("woff");
       }
 
+      p h1 h2 div label {
+        color:white;
+      }
   </style>
 </html>
