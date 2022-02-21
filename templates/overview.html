@@ -11,5 +11,10 @@
   <div class="text-sm md:text-lg md:py-4">
     <p>{{ movie.overview }}</p>
   </div>  
+  <div class="bg-blue p-4">
+    {% for genre in genres %}
+    <p>{{ genre }}</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

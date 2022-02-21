@@ -4,51 +4,56 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <script type="text/javascript" src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
-          extend: {
-
-          }
-        }
-      }
+          extend: {},
+        },
+      };
     </script>
     <title>Premiere Pal</title>
   </head>
-  <body class="flex flex-col bg-black text-black">
-    <div class="w-full bg-red-600/80 backdrop-blur-lg h-[70.27px] md:h-[94.27px]"></div>
-      {% include 'partials/header.html' %}
-    <main class="py-5 flex flex-col bg-gray-300 px-4 md:mx-16">
-      <div class="flex flex-col">
-        <!-- <a href="/collections/new">new collection</a> -->
-        <!-- <a href="/overview">overview</a> -->
-        <!-- <a href="/collections/new">new collection</a> -->
-        <!-- <a href="/collections/new">new collection</a> -->
+  <body class="flex flex-col text-black bg-slate-900 ">
+    <div class="w-full bg-red-900 backdrop-blur-lg h-[56px] md:h-[100px]"></div>
+    {% include 'partials/header.html' %}
+    <main class="py-5 flex flex-col text-white px-4 md:mx-32">
 
-      </div>
-      <div class="">{% block content %}{% endblock %}</div>
+      <div class="flex flex-col justify-center items-center">{% block content %}{% endblock %}</div>
     </main>
+    <div class="flex flex-col">
+      <h1>FAKE LAZY NAV</h1>
+      <a href="/collections/new">new collection</a>
+      <a href="/collections/edit">edit collection</a>
+      <a href="/overview">overview</a>
+    </div>
     {% include 'partials/footer.html' %}
   </body>
   <style>
-      @font-face {
-        font-family: "showtime";
-        src: url("/static/fonts/showtime.woff") format("woff");
-      }
+    @font-face {
+      font-family: "showtime";
+      src: url("/static/fonts/showtime.woff") format("woff");
+    }
 
-      @font-face {
-        font-family: "pal";
-        src: url("/static/fonts/pal.woff") format("woff");
-      }
+    @font-face {
+      font-family: "pal";
+      src: url("/static/fonts/pal.woff") format("woff");
+    }
 
-      @font-face {
-        font-family: "emeraldgrey";
-        src: url("/static/fonts/emeraldgrey.woff") format("woff");
-      }
+    @font-face {
+      font-family: "emeraldgrey";
+      src: url("/static/fonts/emeraldgrey.woff") format("woff");
+    }
 
-      p h1 h2 div label {
-        color:white;
-      }
+    p, h1, h2, div {
+      color: white;
+      font-family: 'Mukta', sans-serif;
+    }
   </style>
 </html>

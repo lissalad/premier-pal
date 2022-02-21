@@ -1,28 +1,23 @@
-<fieldset class="flex flex-col items-end w-fit my-2">
-  <div class="my-1">
-    <label for="collection-title">Title</label>
-    <input
-     class="border-2 border-slate-500 rounded mx-1"
-      id="title"
-      name="title"
-      type="text"
-      value="{{ collection.title if collection else '' }}"
-      required
-    />
-  </div>
-  <div class="my-1">
-    <label for="description">Description</label>
-    <input
-      class="border-2 border-slate-500 rounded mx-1"
-      id="description"
-      name="description"
-      type="text"
-      value="{{ collection.description if collection else ''}}"
-    />
-  </div>
-
-  <div class="bg-sky-300 px-1 rounded-md my-2">
-    <button class="" type="submit">Save</button>
-  </div>
-
-</fieldset>
+  <fieldset class="flex flex-col items-end w-fit my-2 items-center justify-center space-y-2">
+    <div class="my-1 flex flex-col">
+      <label for="collection-title text-xs">Title</label>
+      <input
+        class="border-2 border-slate-500 rounded-sm mx-1"
+        id="title"
+        name="title"
+        type="text"
+        value="{{ collection.title if collection else '' }}"
+        required
+      />
+    </div>
+    <div class="my-1 flex flex-col">
+      <label for="description">Description</label>
+      <input
+        class="border-2 border-slate-500 rounded-sm mx-1"
+        id="description"
+        name="description"
+        type="text"
+        value="{{ collection.description if collection else ''}}"
+      />
+    </div>
+  </fieldset>

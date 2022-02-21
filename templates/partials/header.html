@@ -1,32 +1,32 @@
 <header
-  class="w-full bg-red-600/80 backdrop-blur-lg flex flex-row px-4 items-end justify-between pb-3 pt-1 fixed text-white space-y-1 md:flex-row md:pb-6 md:pt-4"
+  class="w-full bg-red-900/80 backdrop-blur-lg flex flex-row px-4 pt-2 pb-3 items-center justify-between fixed text-white md:flex-row md:py-5"
 >
   <!-- title -->
-  <div class="flex flex-row items-end ">
-    <div class="flex flex-row text-3xl space-x-2 font-['showtime'] md:text-5xl">
-      <h1>Premiere</h1>
+  <div class="flex flex-row items-end space-x-6 md:space-x-12">
+    <a class="flex flex-row text-3xl space-x-2 md:text-5xl items-end" href="/">
+      <h1 class="font-['showtime']">Premiere</h1>
       <span class="text-4xl bold font-['pal']">pal</span>
-    </div>
+    </a>
     <nav
-      class="flex flex-row text-xl space-x-2 text-sm font-['emeraldgrey'] justify-left mx-2 md:flex-row-reverse md:w-fit md:ml-auto"
+      class="flex flex-row text-xl space-x-1 text-sm justify-left md:flex-row-reverse md:ml-auto"
     >
       <!-- search -->
       <input
-        class="rounded-sm w-16 text-center h-[12px] text-slate-500 text-xs p-2 mx-5 mb-1 md:w-full"
+        class="rounded-sm w-16 mb-1 text-center h-[12px] w-[80px] text-slate-500 text-xs md:mb-0 md:w-[150px] md:h-[18px]"
         id="search"
         name="search"
-        value="Search"
+        placeholder="Search"
         required
       />
     </nav>
   </div>
 
-  <!-- oscar prof pic icon -->
+  <!-- prof pic icon -->
   <div class="">
     <img
-      class="background-white mx-3"
-      src="/static/images/profile-icon.png"
-      width="20px"
+      class="background-white rounded-[1px] w-[40px] md:w-[60px]"
+      src="/static/images/profile.png"
+      width="45px"
     />
   </div>
 </header>
