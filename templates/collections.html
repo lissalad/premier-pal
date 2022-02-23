@@ -1,10 +1,23 @@
 {% extends 'base.html' %} {% block content %}
-<h2>collections</h2>
-  {% for collection in collections %}
-  <div class=""><a href="/collections/{{ collection._id }}">
-    <h4 class="">{{ collection.title }}</h4>
-    <p>{{ collection.description }}</p>
-  </a>
-</div>
-  {% endfor %}
+<section>
+  <h2 class="text-xl text-white text-center mb-6 mt-3">Your Collections</h2>
+  
+  <div class="flex flex-row items-start justify-center flex-wrap">
+    {% for collection in collections %}
+    <div
+      class="flex flex-col bg-white/90 items-center justify-center text-center rounded-md w-64 h-fit m-9"
+    >
+      <a href="/collections/{{ collection._id }}">
+        <h4
+          class="text-2xl py-2 w-full border-b-2 border-black bg-slate-400 rounded-t-md"
+        >
+          {{collection.title}}
+        </h4>
+        <p class="text-sm text-black/80 my-3"> {{collection.description}}
+        </p>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
