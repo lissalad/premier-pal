@@ -22,7 +22,7 @@
     {% include 'partials/header.html' %}
     <main class="py-5 flex flex-col bg-black/90 px-4">
       <!-- bg-[url('/static/images/goldpattern.jpg')] bg-repeat bg-cover -->
-      <div class="flex flex-col justify-center items-center">{% block content %}{% endblock %}</div>
+      <div class="flex flex-col z-0">{% block content %}{% endblock %}</div>
     </main>
     <div class="flex flex-col">
       <h1>FAKE LAZY NAV</h1>
@@ -45,17 +45,16 @@
       src: url("/static/fonts/pal.woff") format("woff");
     }
 
-    @font-face {
-      font-family: "emeraldgrey";
-      src: url("/static/fonts/emeraldgrey.woff") format("woff");
-    }
-
-    @font-face {
-      font-family: "gorgone";
-      src: url("/static/fonts/gorgone.woff") format("woff");
-    }
-
     p, h1, h2, div, label, button, legend {
       font-family: 'Roboto';    }
+
+    .mobile-title {
+      font-size: 30px;
+      color: 255, 255, 255;
+      text-align: center;
+      margin-top: 5px;
+     
+    }
+
   </style>
 </html>

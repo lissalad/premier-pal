@@ -40,3 +40,31 @@
     </div>
   <!-- </div> -->
 </div>
+
+
+
+
+MOVIE BUTTONS
+
+      <div>
+        <!-- delete button -->
+        <button
+          class="rounded-full px-3 text-2xl absolute bottom-12 right-2 md:bg-transparent md:text-transparent md:group-hover:bg-rose-600/80 md:group-hover:text-white"
+          type="submit"
+        >
+          -
+        </button>
+        <button
+        class="rounded-full px-3 py-1 text-md absolute -top-2 -right-2 text-white bg-rose-600/80 md:text-transparent md:bg-transparen"
+        type="submit"
+      >
+        x
+      </button>
+        <!-- edit button -->
+        <button
+          class="bg-slate-500/90 rounded-full px-3 py-1 text-white text-md absolute bottom-10 -right-4 md:bg-transparent md:text-transparent md:group-hover:bg-rose-600/80 md:group-hover:text-white"
+          type="submit"
+        >
+          Edit
+        </button>
+      </div>
