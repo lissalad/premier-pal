@@ -41,6 +41,22 @@ def collection_show(collection_id):
   collection = movie_colls.find_one({'_id': ObjectId(collection_id)})
   return render_template('collection_show.html', collection=collection)
 
+@app.route('/collections/<collection_id>/edit')
+def collection_edit(collection_id):
+  collection = movie_colls.find_one({'_id': ObjectId(collection_id)})
+  return render_template('collection_edit.html', collection=collection, title='Edit Collection')
+
+@app.route('/collections/<collection_id>', methods=['POST'])
+def collection_update(collection_id):
+  updated_collection = {
+    'title': request.form.get('title'),
+    'description': request.form.get('description')
+  }
+  movie_colls.update_one(
+    {'_id': ObjectId(collection_id)},
+    {'$set': updated_collection})
+  return redirect(url_for('collection_show', collection_id=collection_id))
+
 # Overview
 movie = {'title': 'Frozen', 'overview': 'abcd', 'release_date': 'November 27, 2013', 'poster_path': '/1eQ3c443YwXz1Xq0FZ24qrJBKyd.jpg', 'genre_ids': '[53, 80]'}
 

@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<form method="POST" action="/collections">
+<form method="POST" action="/collections/{{ collection._id }}">
   {% include 'partials/collection-form.html' %}
 </form>
 
