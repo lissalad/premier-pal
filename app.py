@@ -25,7 +25,7 @@ def collections():
 
 @app.route('/collections/new')
 def collections_new():
-  return render_template('new-collection.html', collection ={})
+  return render_template('new-collection.html', title='New Collection', collection ={})
 
 @app.route('/collections', methods=['POST'])
 def collections_submit():
