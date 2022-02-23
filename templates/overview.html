@@ -1,20 +1,32 @@
 {% extends 'base.html' %} {% block content %}
+<section>
 <div class="flex flex-row items-start md:px-[50px]">
-  <div class="">
-    <img class="w-[120px] p-2 bg-white border-4 border-black md:w-[300px]" src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}" >
+  <!-- poster -->
+  <div class="relative flex flex-col justify-center items-center">
+    <img class="w-[120px]" src="/static/images/gold.png" />
+    <img
+      class="absolute w-[100px] md:w-[300px]"
+      src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}"
+    />
   </div>
-<div class="border-0 border-slate-500 px-5 text-3xl md:px-16 md:text-5xl">
-  <div class="flex flex-row items-end">
-  <h1 class="">{{ movie.title }}</h1>
-  <p class="text-xl mx-2 md:mb-2">({{ movie.release_date[-4:] }})</p>
-</div>
-  <div class="text-sm md:text-lg md:py-4">
-    <p>{{ movie.overview }}</p>
-  </div>  
-  <div class="bg-blue p-4">
-    {% for genre in genres %}
-    <p>{{ genre }}</p>
-    {% endfor %}
+
+  <!-- info -->
+  <div class="border-0 border-slate-500 px-5 text-white text-3xl md:px-16 md:text-5xl">
+    <div class="flex flex-row items-center">
+      <h1 class="">{{ movie.title }}</h1>
+      <p class="text-xl mx-2 md:mb-2">({{ movie.release_date[-4:] }})</p>
+    </div>
+    <div class="text-sm md:text-lg md:py-4">
+      <p>{{ movie.overview }}</p>
+    </div>
   </div>
 </div>
+
+<!-- genres  -->
+<div class="bg-blue p-4">
+  {% for genre in genres %}
+  <p>{{ genre }}</p>
+  {% endfor %}
+</div>
+</section>
 {% endblock %}

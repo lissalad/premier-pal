@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -20,17 +17,17 @@
     </script>
     <title>Premiere Pal</title>
   </head>
-  <body class="flex flex-col text-black bg-slate-900 ">
-    <div class="w-full bg-red-900 backdrop-blur-lg h-[56px] md:h-[100px]"></div>
+  <body class="flex flex-col">
+    <div class="w-full h-[56px] md:h-[100px]"></div>
     {% include 'partials/header.html' %}
-    <main class="py-5 flex flex-col text-white px-4 md:mx-32">
-
+    <main class="py-5 flex flex-col bg-black/90 px-4">
+      <!-- bg-[url('/static/images/goldpattern.jpg')] bg-repeat bg-cover -->
       <div class="flex flex-col justify-center items-center">{% block content %}{% endblock %}</div>
     </main>
     <div class="flex flex-col">
       <h1>FAKE LAZY NAV</h1>
       <a href="/collections/new">new collection</a>
-      <a href="/collections/edit">edit collection</a>
+      <!-- <a href="/collections/edit">edit collection</a> -->
       <a href="/overview">overview</a>
     </div>
     {% include 'partials/footer.html' %}
@@ -51,9 +48,12 @@
       src: url("/static/fonts/emeraldgrey.woff") format("woff");
     }
 
-    p, h1, h2, div {
-      color: white;
-      font-family: 'Mukta', sans-serif;
+    @font-face {
+      font-family: "gorgone";
+      src: url("/static/fonts/gorgone.woff") format("woff");
     }
+
+    p, h1, h2, div, label, button, legend {
+      font-family: 'Roboto';    }
   </style>
 </html>
