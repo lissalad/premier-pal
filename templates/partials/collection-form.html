@@ -1,15 +1,37 @@
 <section>
-  <div class="bg-white/95 border-2 border-slate-900 w-fit px-4 py-9 flex flex-col items-center rounded-3xl w-[80vw] mt-16 mb-24 shadow-xl md:w-[30vw] md:space-y-16">
+  <div
+    class="bg-white/95 border-2 border-slate-900 w-fit px-4 py-9 flex flex-col items-center justify-center rounded-3xl w-[80vw] mt-16 mb-24 shadow-xl md:w-[20vw] md:space-y-8"
+  >
     <legend class="text-3xl">{{title}}</legend>
-    <div class="flex flex-col w-full mx-4 mb-12 mt-9 px-4">
-      <label class="mb-1 text-lg" for="title">Title</label>
-      <input
-      class="p-2 border-2 border-slate rounded-xl shadow-xl"
-      id="title"
-      name="title"
-      type="text"
-      value="{{ collection.title if collection else ''}}"/>
+
+    <div class="flex flex-col items-start space-y-5 my-7">
+      <div class="flex flex-col">
+        <label class="mb-1 text-sm" for="title">Title</label>
+        <input
+          class="p-2 border-2 border-slate rounded-xl shadow-xl w-full"
+          id="title"
+          name="title"
+          type="text"
+          value="{{ collection.title if collection else ''}}"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label class="mb-1 text-sm" for="description">Description</label>
+        <textarea
+          class="p-2 border-2 border-slate rounded-xl shadow-xl w-full"
+          id="description"
+          name="description"
+          type="text"
+          value="{{ collection.description if collection else ''}}"
+        ></textarea>
+      </div>
     </div>
-    <button class="bg-slate-200 border-2 border-slate-400/50 shadow-xl rounded-xl py-1 px-3 text-lg" type="submit">Save</button>
+
+    <button
+      class="bg-slate-200 border-2 border-slate-400/50 shadow-xl rounded-xl py-1 px-3 text-lg"
+      type="submit"
+    >
+      Save
+    </button>
   </div>
 </section>
