@@ -46,6 +46,11 @@ def collection_edit(collection_id):
   collection = movie_colls.find_one({'_id': ObjectId(collection_id)})
   return render_template('collection_edit.html', collection=collection, title='Edit Collection')
 
+@app.route('/collections/<collection_id>/delete', methods=['POST'])
+def collection_delete(collection_id):
+  movie_colls.delete_one({'_id': ObjectId(collection_id)})
+  return redirect(url_for('collections'))
+
 @app.route('/collections/<collection_id>', methods=['POST'])
 def collection_update(collection_id):
   updated_collection = {
