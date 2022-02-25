@@ -1,32 +1,46 @@
 {% extends 'base.html' %} {% block content %}
-<section>
-<div class="flex flex-row items-start md:px-[50px]">
-  <!-- poster -->
-  <div class="relative flex flex-col justify-center items-center">
-    <img class="w-[120px]" src="/static/images/gold.png" />
-    <img
-      class="absolute w-[100px] md:w-[300px]"
-      src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}"
-    />
+<section class="mx-4">
+
+  <!-- back button NEEDS HELP -->
+  <a href="/"> {% include 'partials/back.html' %} </a>
+
+  <!-- title -->
+  <div
+    class="flex flex-row text-4xl justify-center text-white items-center -mt-5"
+  >
+    <h1 class="">{{ movie.title }}</h1>
+    <p class="mx-2 text-3xl text-white/70 md:mb-2">
+      ({{ movie.release_date[-4:] }})
+    </p>
   </div>
 
-  <!-- info -->
-  <div class="border-0 border-slate-500 px-5 text-white text-3xl md:px-16 md:text-5xl">
-    <div class="flex flex-row items-center">
-      <h1 class="">{{ movie.title }}</h1>
-      <p class="text-xl mx-2 md:mb-2">({{ movie.release_date[-4:] }})</p>
+  <div class="flex flex-row items-start mt-7 md:px-[50px]">
+    <!-- poster -->
+    <div class="">
+      <img
+        class="rounded-sm w-[140px] md:w-[300px]"
+        src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}"
+      />
     </div>
-    <div class="text-sm md:text-lg md:py-4">
-      <p>{{ movie.overview }}</p>
+
+    <!-- overview -->
+    <div
+      class="border-0 border-slate-500 px-5 text-white mt-3 text-3xl md:px-16 md:text-5xl"
+    >
+      <div class="text-sm md:text-lg md:py-4">
+        <p>{{ movie.overview }}</p>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- genres  -->
-<div class="bg-blue p-4">
-  {% for genre in genres %}
-  <p>{{ genre }}</p>
-  {% endfor %}
-</div>
+  <!-- genres  -->
+  <div class="bg-blue p-4">
+    {% for genre in genres %}
+    <p>{{ genre }}</p>
+    {% endfor %}
+  </div>
+
+  <!-- add movie to collection button -->
+  <a> {% include 'partials/add.html' %} </a>
 </section>
 {% endblock %}

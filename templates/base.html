@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <script type="text/javascript" src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -17,23 +20,32 @@
     </script>
     <title>Premiere Pal</title>
   </head>
+
   <body class="flex flex-col">
     <div class="w-full h-[56px] md:h-[100px]"></div>
+    <!-- header -->
     {% include 'partials/header.html' %}
-    <main class="py-5 flex flex-col bg-black/90 px-4">
-      <!-- bg-[url('/static/images/goldpattern.jpg')] bg-repeat bg-cover -->
-      <div class="flex flex-col z-0">{% block content %}{% endblock %}</div>
+    <!-- fixed header placeholder NEEDS HELP -->
+    <div></div>
+    
+    <!-- main -->
+    <main class="py-5 flex flex-col bg-black/90 pb-80 px-4">
+      {% block content %}{% endblock %}
     </main>
+
+    <!-- TEMPORARY NAV -->
     <div class="flex flex-col">
       <h1>FAKE LAZY NAV</h1>
       <a href="/collections/new">new collection</a>
-      <!-- <a href="/collections/edit">edit collection</a> -->
       <a href="/overview">overview</a>
       <a href="/collections">collections</a>
-
     </div>
+
     {% include 'partials/footer.html' %}
   </body>
+
+  <!-- ------------------- STYLES ------------------------------------------  -->
+
   <style>
     @font-face {
       font-family: "showtime";
@@ -45,16 +57,20 @@
       src: url("/static/fonts/pal.woff") format("woff");
     }
 
-    p, h1, h2, div, label, button, legend {
-      font-family: 'Roboto';    }
+    p,
+    h1,
+    h2,
+    div,
+    label,
+    button,
+    legend {
+      font-family: "Roboto";
+    }
 
     .mobile-title {
       font-size: 30px;
-      color: 255, 255, 255;
       text-align: center;
       margin-top: 5px;
-     
     }
-
   </style>
 </html>

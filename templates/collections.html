@@ -1,23 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 <section>
-  <h2 class="mobile-title">Your Collections</h2>
-  
-  <div class="flex flex-row items-start justify-center flex-wrap">
+  <!-- title -->
+  <h2 class="mobile-title text-white">Your Collections</h2>
+<div>
+    <!-- back button -->
+    <a href="/"> {% include 'partials/back.html' %} </a>
+
+    <div class="flex flex-row items-start mx-2 justify-start flex-wrap">
+      <!-- loop through collections -->
     {% for collection in collections %}
     <a href="/collections/{{ collection._id }}">
-    <div
-      class="flex flex-col bg-white/90 items-center justify-center text-center rounded-md w-64 h-fit m-6"
-    >
-        <h4
-          class="text-3xl py-2 w-64 border-b-2 border-black bg-slate-400 rounded-t-md"
-        >
-          {{ collection.title }}
-        </h4>
-        <p class="text-sm text-black/80 my-3"> {{ collection.description }}
-        </p>
+      <div class="rounded bg-white/80 p-2 w-32 h-28 m-4">
+        <h4 class="text-3xl border-black">{{ collection.title }}</h4>
+        <p class="text-sm text-black/80">{{ collection.description }}</p>
       </div>
     </a>
     {% endfor %}
   </div>
+</div>
+
+  <!-- add new collection button -->
+  <a href="/collections/new"> {% include "partials/add.html" %} </a>
 </section>
 {% endblock %}
