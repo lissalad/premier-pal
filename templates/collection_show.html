@@ -13,6 +13,11 @@
         >
           <a href="/collections/{{ collection._id }}/delete">Delete</a>
         </button>
+        <!-- Ahyeon's -->
+        <p><form method='POST' action='/collections/{{ collection._id }}/delete'>
+          <button style='color: white;' type='submit'>Delete</button>
+      </form></p>
+
         <button
           class="bg-slate-200/70 shadow-xl rounded-xl py-1 h-fit px-2 text-sm"
           type="submit"
