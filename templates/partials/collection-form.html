@@ -1,4 +1,4 @@
-<section>
+<section class="flex justify-center">
 
   <div
     class="bg-white/95 border-2 border-slate-900 flex flex-col items-center justify-center py-5 rounded-3xl my-10 mx-6 shadow-xl md:w-[20vw] md:space-y-8 "
@@ -19,13 +19,13 @@
       <div class="flex flex-col">
         <!-- NEEDS CHARACTER LIMIT -->
         <label class="mb-1 text-sm" for="description">Description</label>
-        <textarea
+        <input
           class="p-2 border-2 border-slate rounded-xl shadow-xl w-56"
           id="description"
           name="description"
           type="text"
-          value="{{ collection.description if collection else ''}}"
-        ></textarea>
+          value='{{ collection.description if collection else ""}}'
+        />
       </div>
     </div>
 

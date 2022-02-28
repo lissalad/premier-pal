@@ -1,15 +1,15 @@
 {% extends 'base.html' %} {% block content %}
-<section class="mx-4">
+<section class="mx-4 md:mx-20">
 
   <!-- back button NEEDS HELP -->
   <a href="/"> {% include 'partials/back.html' %} </a>
 
   <!-- title -->
   <div
-    class="flex flex-row text-4xl justify-center text-white items-center -mt-5"
+    class="flex flex-row text-4xl justify-center text-white items-center -mt-5 md: mt-0 md:justify-right md:mb-20"
   >
     <h1 class="">{{ movie.title }}</h1>
-    <p class="mx-2 text-3xl text-white/70 md:mb-2">
+    <p class="mx-2 text-3xl text-white/70">
       ({{ movie.release_date[-4:] }})
     </p>
   </div>

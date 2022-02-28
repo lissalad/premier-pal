@@ -2,7 +2,6 @@
 <section>
   <div class="flex flex-col items-center mb-6">
     <div class="flex flex-row items-center justify-between w-full">
-
       <!-- back button -->
       <a href="/collections"> {% include 'partials/back.html' %} </a>
 
@@ -12,7 +11,7 @@
           class="bg-rose-400/80 shadow-xl rounded-xl h-fit py-1 px-2 text-sm"
           type="submit"
         >
-          Delete
+          <a href="/collections/{{ collection._id }}/delete">Delete</a>
         </button>
         <button
           class="bg-slate-200/70 shadow-xl rounded-xl py-1 h-fit px-2 text-sm"
@@ -29,10 +28,14 @@
     </p>
   </div>
 
-  <div class="flex flex-row justify-center flex-wrap my-3 md:justify-start">
+  <div
+    class="flex flex-row justify-center flex-wrap my-3 md:justify-center md:mx-18"
+  >
     <!-- loop through movies will be here -->
     <div class="flex flex-col items-center my-3 mx-3">
-      <div class="w-[120px] relative flex justify-center relative group">
+      <div
+        class="w-[120px] relative flex justify-center relative group md:w-[200px]"
+      >
         <img class="z-0 rounded-sm" src="/static/images/midsommar.jpeg" />
         <div
           class="z-1000 text-transparent h-full w-full absolute bottom-0 flex flex-col items-center space-y-4 justify-center hover:bg-black/80 group-hover:text-white"

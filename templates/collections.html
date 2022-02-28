@@ -6,11 +6,11 @@
     <!-- back button -->
     <a href="/"> {% include 'partials/back.html' %} </a>
 
-    <div class="flex flex-row items-start mx-2 justify-start flex-wrap">
+    <div class="flex flex-row items-start mx-2 justify-center flex-wrap md:mx-18">
       <!-- loop through collections -->
     {% for collection in collections %}
     <a href="/collections/{{ collection._id }}">
-      <div class="rounded bg-white/80 p-2 w-32 h-28 m-4">
+      <div class="rounded bg-white/80 p-2 w-32 h-48 m-4 md:w-48">
         <h4 class="text-3xl border-black">{{ collection.title }}</h4>
         <p class="text-sm text-black/80">{{ collection.description }}</p>
       </div>
