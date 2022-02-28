@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>You searched for: </h1>
+    {% for result in results %}
+        <img
+        class="w-[100px] md:w-[300px]"
+        src="https://image.tmdb.org/t/p/original{{ result.poster_path }}"
+        />
+        <h3>{{ result.original_title }}</h3>
+        <p>{{ result.overview }}</p>
+    {% endfor %}
+
+
+{% endblock %}

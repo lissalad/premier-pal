@@ -2,11 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
+from forms import SearchForm
 import requests
 import os
 
 API_KEY = os.getenv('API_KEY')
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'my secret key'
 
 host = os.environ.get("DB_URL")
 client = MongoClient()
@@ -15,9 +17,29 @@ db = client.Premiere_PAL
 movie_colls = db.movie_coll
 movies = db.movies
 
+def create_title_str(title):
+  title_str = ''
+  for i in range(len(title)):
+    if i == 0:
+      title_str += title[i]
+    else:
+      title_str += f'+{title[i]}'
+  return title_str
+
 @app.route('/')
 def home():
   return render_template('index.html')
+
+@app.route('/search', methods=['POST'])
+def search():
+  form = SearchForm()
+  post_data = form.search.data
+  title = create_title_str(post_data.split())
+  response = requests.get(f'https://api.themoviedb.org/3/search/multi?api_key={API_KEY}&language=en-US&page=1&query={title}&include_adult=false')
+  response_data = response.json()
+  results = response_data['results']
+
+  return render_template("search.html", results=results )
 
 @app.route('/collections')
 def collections():

@@ -11,13 +11,16 @@
       class="flex flex-row text-xl space-x-1 text-sm justify-left md:flex-row-reverse md:ml-auto"
     >
       <!-- search -->
-      <input
-        class="rounded-sm w-16 mb-1 text-center h-[12px] w-[80px] text-slate-500 border-[2px] py-2 text-xs md:mb-0 md:w-[150px] md:h-[18px]"
-        id="search"
-        name="search"
-        placeholder="Search"
-        required
-      />
+      <form method="POST" action="{{ url_for('search') }}">
+        <input
+          class="rounded-sm w-16 mb-1 text-center h-[12px] w-[80px] text-slate-500 border-[2px] py-2 text-xs md:mb-0 md:w-[150px] md:h-[18px]"
+          id="search"
+          name="search"
+          type="search"
+          placeholder="Search"
+        />
+        <button type="submit">Search</button>
+      </form>
     </nav>
   </div>
 
