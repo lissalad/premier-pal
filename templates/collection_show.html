@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<section>
+<section class="w-full">
   <div class="flex flex-col items-center mb-6">
     <div class="flex flex-row items-center justify-between w-full">
       <!-- back button -->
@@ -13,11 +13,6 @@
         >
           <a href="/collections/{{ collection._id }}/delete">Delete</a>
         </button>
-        <!-- Ahyeon's -->
-        <p><form method='POST' action='/collections/{{ collection._id }}/delete'>
-          <button style='color: white;' type='submit'>Delete</button>
-      </form></p>
-
         <button
           class="bg-slate-200/70 shadow-xl rounded-xl py-1 h-fit px-2 text-sm"
           type="submit"
@@ -29,7 +24,7 @@
     <!-- collection title and description -->
     <h2 class="mobile-title text-white">{{ collection.title }}</h2>
     <p class="text-sm text-center w-72 text-white/70">
-      {{collection.description }}
+      {{ collection.description }}
     </p>
   </div>
 
@@ -37,22 +32,24 @@
     class="flex flex-row justify-center flex-wrap my-3 md:justify-center md:mx-18"
   >
     <!-- loop through movies will be here -->
-    <div class="flex flex-col items-center my-3 mx-3">
-      <div
-        class="w-[120px] relative flex justify-center relative group md:w-[200px]"
-      >
-        <img class="z-0 rounded-sm" src="/static/images/midsommar.jpeg" />
+    <div class="flex flex-col items-center my-3 mx-3 relative">
+      <button><img class="bg-white/70 backdrop-blur rounded-full p-1 w-8 absolute z-50 top-2 right-2" onclick="toggleSettings()" src="/static/icons/gear.svg">
+      </button>
         <div
-          class="z-1000 text-transparent h-full w-full absolute bottom-0 flex flex-col items-center space-y-4 justify-center hover:bg-black/80 group-hover:text-white"
+        class="w-[120px] relative flex justify-center relative md:w-[200px]"
+      >
+        <a href="/overview"><img class="z-0 rounded-sm" src="/static/images/midsommar.jpeg" /></a>
+        <div
+        id="edit-overlay" class="hidden z-1000 h-full w-full absolute bottom-0 flex flex-col items-center space-y-4 justify-center bg-black/70 text-white"
         >
-          <button
-            class="group-hover:bg-slate-400/70 shadow-xl rounded-xl py-1 px-3 mt-2 text-lg"
+          <button 
+            class="shadow-xl rounded-xl py-1 px-3 mt-2 text-lg bg-slate-300/60"
             type="submit"
           >
             <a>Edit</a>
           </button>
           <button
-            class="group-hover:bg-rose-400/70 shadow-xl rounded-xl py-1 px-3 mt-2 text-lg"
+            class="bg-rose-400/70 shadow-xl rounded-xl py-1 px-3 mt-2 text-lg"
             type="submit"
           >
             Delete
@@ -63,5 +60,19 @@
     </div>
     <!-- end for -->
   </div>
+
+    <!-- add new movie to collection button -->
+    <a> {% include "partials/add.html" %} </a>
 </section>
+
+<script>
+  function toggleSettings() {
+  var x = document.getElementById("edit-overlay");
+  if (x.style.display === "flex") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+  }
+}
+</script>
 {% endblock %}

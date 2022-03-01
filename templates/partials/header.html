@@ -11,21 +11,27 @@
       class="flex flex-row text-xl space-x-1 text-sm justify-left md:flex-row-reverse md:ml-auto"
     >
       <!-- search -->
-      <form method="POST" action="{{ url_for('search') }}">
+      <form class="flex flex-row items-center" method="POST" action="{{ url_for('search') }}">
         <input
-          class="rounded-sm w-16 mb-1 text-center h-[12px] w-[80px] text-slate-500 border-[2px] py-2 text-xs md:mb-0 md:w-[150px] md:h-[18px]"
+          class="rounded-sm w-16 mb-1 text-left px-2 h-[12px] w-[80px] text-slate-500 border-[2px] py-2 text-xs md:mb-0 md:w-[150px] md:h-[18px]"
           id="search"
           name="search"
           type="search"
           placeholder="Search"
+          required
         />
-        <button type="submit">Search</button>
+        <button class="w-4 mx-1 mb-1 md:w-5 md:mb-0 " type="submit"><img src="/static/icons/search.svg"/></button>
       </form>
     </nav>
   </div>
 
+  
   <!-- prof pic icon -->
-  <div class="">
+  <div class="flex flex-row items-end md:space-x-8">
+    <a class="hidden md:block md:flex -mb-2 flex-col justify-center items-center" href="/collections">
+      <img class="w-10 mb-2" src="/static/images/reel.png"/>
+      <p class="text-sm">My Collections</p></a>
+
     <img
       class="background-white rounded-[1px] w-[40px] md:w-[60px]"
       src="/static/images/profile.png"
