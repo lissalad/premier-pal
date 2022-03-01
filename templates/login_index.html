@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="color:white;">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+    {% for message in messages %}
+        <li style="font-size: 25px; justify-content: center; display: flex;">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <h1>Login Page</h1><br>
+    <form method=POST action="{{ url_for('signin') }}">
+        <div>
+            <label for="exampleInputEmail1">Email</label>
+            <input style="color: black;" type="text"name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input style="color: black;" type="password" name="pass" placeholder="Password">
+        </div>
+        <div>
+            <button type="submit">Log In</button>
+        </div>
+    </form>
+    <br>
+    <div>
+        <a href="{{ url_for('register') }}">Don't have an account? </a>
+    </div>
+</div>
+{% endblock %}

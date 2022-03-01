@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
 from forms import SearchForm
 import requests
 import os
+import bcrypt
 
 API_KEY = os.getenv('API_KEY')
 app = Flask(__name__)
@@ -13,7 +14,7 @@ app.config['SECRET_KEY'] = 'my secret key'
 host = os.environ.get("DB_URL")
 client = MongoClient()
 db = client.Premiere_PAL
-# users = db.users
+users = db.users
 movie_colls = db.movie_coll
 movies = db.movies
 
@@ -25,6 +26,46 @@ def create_title_str(title):
     else:
       title_str += f'+{title[i]}'
   return title_str
+
+# Login & Register
+@app.route('/login')
+def login_index():
+    if 'email' in session:
+        return render_template('index.html')
+    
+    return render_template('login_index.html')
+
+@app.route('/signin', methods=['POST'])
+def signin():
+    login_user = users.find_one({'email' : request.form['email']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+            session['email'] = request.form['email']
+            return redirect(url_for('login_index'))
+    flash('Invalid email/password combination')
+    return render_template('login_index.html')
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        existing_user = users.find_one({'email': request.form['email']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert_one({'name' : request.form['username'], 'email' : request.form['email'], 'password' : hashpass })
+            session['email'] = request.form['email']
+            return redirect(url_for('login_index'))
+        
+        flash('That email already exists!')
+        return render_template('login_register.html')
+    
+    return render_template('login_register.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('login_index'))
 
 @app.route('/')
 def home():
