@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-  <!-- needs better back -->
-<a href="/">
-  {% include 'partials/back.html' %}
-</a> 
+
+  <!-- back -->
+  <button href="javascript:history.back()">
+    {% include 'partials/back.html' %}
+  </button> 
+
 <form method="POST" action="/collections/{{ collection._id }}">
   {% include 'partials/collection-form.html' %}
 </form>

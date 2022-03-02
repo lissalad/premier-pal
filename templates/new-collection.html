@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-      <!-- back button -->
-      {% include 'partials/back.html' %} 
+  <!-- back -->
+  <button href="javascript:history.back()">
+    {% include 'partials/back.html' %}
+  </button> 
 <form method="POST" action="/collections">
   {% include 'partials/collection-form.html' %}
 </form>

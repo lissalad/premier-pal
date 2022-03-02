@@ -3,8 +3,10 @@
   <!-- title -->
   <h2 class="mobile-title text-white">Your Collections</h2>
 <div>
-      <!-- back button -->
-      {% include 'partials/back.html' %}
+  <!-- back -->
+  <button href="javascript:history.back()">
+    {% include 'partials/back.html' %}
+  </button> 
 
     <div class="flex flex-row items-start mx-2 justify-center flex-wrap md:mx-18">
       <!-- loop through collections -->

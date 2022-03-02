@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <section class="flex flex-col w-full text-white md:mx-[300px] md:mt-9">
-        <!-- back button -->
-        {% include 'partials/back.html' %}
+  <!-- back -->
+  <button href="javascript:history.back()">
+    {% include 'partials/back.html' %}
+  </button> 
   <div class="w-full flex flex-row items-end space-x-6 mt-4">
     <img class="w-24" src="/static/images/profile.png" />
     <div class="flex flex-col mb-3">
