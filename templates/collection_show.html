@@ -6,13 +6,15 @@
       <a href="/collections"> {% include 'partials/back.html' %} </a>
 
       <!-- edit and delete NEEDS HELP -->
-      <div>
-        <button
-          class="bg-rose-400/80 shadow-xl rounded-xl h-fit py-1 px-2 text-sm"
-          type="submit"
-        >
-          <a href="/collections/{{ collection._id }}/delete">Delete</a>
-        </button>
+      <div class="flex flex-row space-x-2">
+        <form method="POST" action="/collections/{{ collection._id }}/delete">
+          <button
+            class="bg-rose-400/80 shadow-xl rounded-xl h-fit py-1 px-2 text-sm"
+            type="submit"
+          >
+            Delete
+          </button>
+        </form>
         <button
           class="bg-slate-200/70 shadow-xl rounded-xl py-1 h-fit px-2 text-sm"
           type="submit"
@@ -33,16 +35,22 @@
   >
     <!-- loop through movies will be here -->
     <div class="flex flex-col items-center my-3 mx-3 relative">
-      <button><img class="bg-white/70 backdrop-blur rounded-full p-1 w-8 absolute z-50 top-2 right-2" onclick="toggleSettings()" src="/static/icons/gear.svg">
+      <button>
+        <img
+          class="bg-white/70 backdrop-blur rounded-full p-1 w-8 absolute z-50 top-2 right-2"
+          onclick="toggleSettings()"
+          src="/static/icons/gear.svg"
+        />
       </button>
+      <div class="w-[120px] relative flex justify-center relative md:w-[200px]">
+        <a href="/overview"
+          ><img class="z-0 rounded-sm" src="/static/images/midsommar.jpeg"
+        /></a>
         <div
-        class="w-[120px] relative flex justify-center relative md:w-[200px]"
-      >
-        <a href="/overview"><img class="z-0 rounded-sm" src="/static/images/midsommar.jpeg" /></a>
-        <div
-        id="edit-overlay" class="hidden z-1000 h-full w-full absolute bottom-0 flex flex-col items-center space-y-4 justify-center bg-black/70 text-white"
+          id="edit-overlay"
+          class="hidden z-1000 h-full w-full absolute bottom-0 flex flex-col items-center space-y-4 justify-center bg-black/70 text-white"
         >
-          <button 
+          <button
             class="shadow-xl rounded-xl py-1 px-3 mt-2 text-lg bg-slate-300/60"
             type="submit"
           >
@@ -52,7 +60,7 @@
             class="bg-rose-400/70 shadow-xl rounded-xl py-1 px-3 mt-2 text-lg"
             type="submit"
           >
-            Delete
+            Remove
           </button>
         </div>
       </div>
@@ -61,18 +69,18 @@
     <!-- end for -->
   </div>
 
-    <!-- add new movie to collection button -->
-    <a> {% include "partials/add.html" %} </a>
+  <!-- add new movie to collection button -->
+  <a> {% include "partials/add.html" %} </a>
 </section>
 
 <script>
   function toggleSettings() {
-  var x = document.getElementById("edit-overlay");
-  if (x.style.display === "flex") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "flex";
+    var x = document.getElementById("edit-overlay");
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
   }
-}
 </script>
 {% endblock %}
