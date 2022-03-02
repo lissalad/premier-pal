@@ -14,18 +14,12 @@
   <div class="my-4 md:mt-10">
     <h3 class="mb-2 my-4 mx-2">Collections</h3>
     <div class="bg-slate-400/30 rounded">
-      <!-- loop through user's collections -->
-      <div class="flex flex-row items-center p-3 hover:bg-slate-400/20">
-        <p class="">collection 1</p>
-        <p class="text-white/40 text-xs mx-3">
-          this is the description of the collection
-        </p>
-      </div>
-      <p class="p-3 hover:bg-slate-400/20">collection 2</p>
-      <p class="p-3 hover:bg-slate-400/20">collection 3</p>
-      <p class="p-3 hover:bg-slate-400/20">collection 4</p>
-      <p class="p-3 hover:bg-slate-400/20">collection 5</p>
-      <p class="p-3 hover:bg-slate-400/20">collection 6</p>
+      {% for collection in collections %}
+      <a class="flex flex-row items-center p-3 hover:bg-slate-400/20" href="/collections/{{ collection._id }}">
+        <p class="">{{ collection.title }}</p>
+        <p class="text-white/40 text-xs mx-3">{{ collection.description }}</p>
+      </a>
+      {% endfor %}
     </div>
   </div>
 </section>

@@ -42,7 +42,7 @@ def get_movie_details(title_str):
 @app.route('/login')
 def login_index():
     if 'email' in session:
-        return render_template('index.html')
+        return redirect(url_for('home'))
     
     return render_template('login_index.html')
 
@@ -82,7 +82,9 @@ def logout():
 
 @app.route('/')
 def home():
-  return render_template('index.html')
+  response = requests.get(f'https://api.themoviedb.org/3/trending/all/day?api_key={API_KEY}')
+  results = response.json()
+  return render_template('home.html', results = results['results'])
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -182,7 +184,9 @@ def add_movie(movie_title, collection_id):
 
 @app.route('/user')
 def user():
-  return render_template('user.html')
+  user = users.find_one({"email": session.get("email")})
+  user_collections = list(movie_colls.find({"user": user["_id"]}))
+  return render_template('user.html', collections=user_collections)
 
 if __name__ == "__main__":
   app.run(debug=True)
