@@ -1,11 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 <section
-  class="bg-white/95 border-2 border-slate-900 flex flex-col items-center justify-center pb-5 px-6 rounded-3xl my-20 mx-6 shadow-xl md:space-y-8"
+  class="bg-white/95 border-2 border-slate-900 flex flex-col items-center justify-center py-5 px-6 rounded-3xl my-20 mx-6 shadow-xl md:space-y-8"
 >
-  <!-- back -->
-  <button href="javascript:history.back()">
-    {% include 'partials/back.html' %}
-  </button> 
+
 
   <!-- flash -->
   {% with messages = get_flashed_messages() %} {% if messages %}
