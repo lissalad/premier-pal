@@ -41,14 +41,20 @@
       onclick="toggleDropdown()"
     />
     <div id="dropdown" class="hidden bg-black/90 backdrop-blur-[200px] absolute right-5 top-[60px] text-right py-2 rounded-bl-2xl -mr-5 flex flex-col md:top-[100px] md:right-0">
-      <a class="my-1 text-[20px] pr-5 pl-7">Username</a>
+      {% if session.email %}
+      <a class="my-1 text-[20px] pr-5 pl-7">{{ session.name }}</a>
       <a class="py-6 text-sm pr-5 pl-7 text-white/70 hover:bg-white/30" href="/user">My Profile</a>
       <a class="py-6 text-sm  pr-5 pl-7 text-white/70 hover:bg-white/30" href="/collections">My Collections</a>
+      {% endif %}
+
 
 
       <!-- if logged in -->
+      {% if session.email %}
       <a class="mb-2 mt-12 text-xs pr-5 pl-7 text-slate-400/50 hover:text-white md:py-4" href="/logout">Logout</a>
-
+      {% else %}
+      <a class="mb-2 mt-12 text-xs pr-5 pl-7 text-slate-400/50 hover:text-white md:py-4" href="/login">Login</a>
+      {% endif %}
       <!-- if not logged in -->
       <!-- <a class="mb-2 mt-12 text-xs pr-5 pl-7 text-white/50 hover:text-white md:py-4" href="#">Login</a> -->
 

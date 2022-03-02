@@ -43,6 +43,7 @@ def signin():
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['email'] = request.form['email']
+            session['name'] = login_user['name']
             return redirect(url_for('login_index'))
     flash('Invalid email/password combination')
     return render_template('login_index.html')
