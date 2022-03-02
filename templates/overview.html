@@ -12,7 +12,7 @@
   >
     <h1 class="">{{ movie.title }}</h1>
     <p class="mx-2 text-3xl text-white/70">
-      ({{ movie.release_date[-4:] }})
+      ({{ movie.release_date }})
     </p>
   </div>
 
@@ -40,7 +40,8 @@
   </div>
 
   <!-- genres  -->
-  <div class="bg-blue p-4">
+  <div class="text-sm w-72 text-white/70">
+    <p >Genres:</p>
     {% for genre in genres %}
     <p>{{ genre }}</p>
     {% endfor %}
