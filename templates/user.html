@@ -7,8 +7,8 @@
   <div class="w-full flex flex-row items-end pl-16 space-x-6 mt-2">
     <img class="w-20" src="/static/images/profile.png" />
     <div class="flex flex-col mb-3">
-      <h2 class="text-2xl">Username</h2>
-      <p class="text-xs text-white/80">theemailoftheuser@email.com</p>
+      <h2 class="text-2xl">{{ session.username if session else 'no session'}}</h2>
+      <p class="text-xs text-white/80">{{ session.email if session else "sessiondoesnotwork@email.com"}}</p>
     </div>
   </div>
   <div class="my-4 md:mt-10">
