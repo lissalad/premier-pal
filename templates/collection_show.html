@@ -36,6 +36,7 @@
     class="flex flex-row justify-center flex-wrap my-3 md:justify-center md:mx-18"
   >
     <!-- loop through movies will be here -->
+    {% for movie in collection.movies %}
     <div class="flex flex-col items-center my-3 mx-3 relative">
       <button>
         <img
@@ -45,8 +46,8 @@
         />
       </button>
       <div class="w-[120px] relative flex justify-center relative md:w-[200px]">
-        <a href="/overview"
-          ><img class="z-0 rounded-sm" src="/static/images/midsommar.jpeg"
+        <a href="/overview/{{ movie.original_title }}""
+          ><img class="z-0 rounded-sm" src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}"
         /></a>
         <div
           id="edit-overlay"
@@ -66,9 +67,10 @@
           </button>
         </div>
       </div>
-      <h3 class="mt-2 text-white text-sm w-[110px] text-center">Movie Title</h3>
+      <h3 class="mt-2 text-white text-sm w-[110px] text-center">{{ movie.title }}</h3>
     </div>
     <!-- end for -->
+    {% endfor %}
   </div>
 
   <!-- add new movie to collection button -->

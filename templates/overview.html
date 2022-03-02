@@ -29,6 +29,10 @@
     <div
       class="border-0 border-slate-500 px-5 text-white mt-3 text-3xl md:px-16 md:text-5xl"
     >
+      <div class="card"><div class="card-body">
+        <iframe width="560" height="315" src="https://youtube.com/embed/{{ video_id }}" alt="YouTube Trailer" allowfullscreen></iframe>
+      </div>
+
       <div class="text-sm md:text-lg md:py-4">
         <p>{{ movie.overview }}</p>
       </div>
@@ -43,6 +47,6 @@
   </div>
 
   <!-- add movie to collection button -->
-  <a> {% include 'partials/add.html' %} </a>
+  <a href="/movie/{{ movie.original_title }}/collections"> {% include 'partials/add.html' %} </a>
 </section>
 {% endblock %}
