@@ -81,6 +81,10 @@ def logout():
     return redirect(url_for('login_index'))
 
 @app.route('/')
+def index():
+  return render_template('index.html')
+
+@app.route('/home')
 def home():
   response = requests.get(f'https://api.themoviedb.org/3/trending/all/day?api_key={API_KEY}')
   results = response.json()
