@@ -1,22 +1,23 @@
 {% extends 'base.html' %} {% block content %}
-<section class="w-full flex flex-col items-center">
-
-
-
-  <div class="flex flex-col relative items-center -mx-5 -mt-5">
-    <img class="w-[]" src="/static/images/cinema.png" />
-    <div class="flex flex-col text-black top-20 absolute">
-      <h1 class="text-6xl ">hi pal</h1>
-      <p class="m-4 ml-24 text-md">Let's watch a movie!</p>
-    </div>
+<section class="w-full flex flex-col items-center justify-center md:flex-row md:items-center">
+  <div class="flex flex-col relative items-center -mx-5 -mt-5 ">
+    <img class="md:w-[83vh]" src="/static/images/cinema.png" />
+    <a
+      class="flex flex-col text-black top-20 absolute items-center md:top-36"
+      href="/login"
+    >
+      <img
+        class="w-16 bg-black/40 rounded-full p-2 md:w-24"
+        src="/static/icons/play.svg"
+      />
+      <p class="mt-4 text-lg md:text-2xl">Welcome!</p>
+    </a>
   </div>
-  
-  <a
-  href="/login"
-  class="bg-sky-300/70 shadow-xl rounded-xl py-1 px-3 text-2xl mt-16"
->
-  Get Started!
-</a>
+
+  <!-- <div class="flex flex-col mt-6 w-full items-center text-white/90 px-4 md:w-fit md:-mt-40">
+    <h1 class="text-7xl ml-3 md:mb-32 md:text-[90px]">hey pal,</h1>
+    <p class="mt-9 text-3xl font-['pal'] text-right md:text-[70px] md:ml-12">Let's watch a movie!</p>
+  </div> -->
 
 </section>
 {% endblock %}

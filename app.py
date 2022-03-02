@@ -28,11 +28,21 @@ def create_title_str(title):
       title_str += f'+{title[i]}'
   return title_str
 
+def get_movie_details(title_str):
+  response = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={title_str}')
+  response_data = response.json()
+  
+  movie_id = response_data['results'][0]['id']
+  
+  details = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&append_to_response=videos')
+  movie = details.json()
+  return movie
+
 # Login & Register
 @app.route('/login')
 def login_index():
     if 'email' in session:
-        return render_template('index.html')
+        return redirect(url_for('home'))
     
     return render_template('login_index.html')
 
@@ -67,11 +77,18 @@ def register():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
+    #session.pop('name', None)
     return redirect(url_for('login_index'))
 
 @app.route('/')
-def home():
+def index():
   return render_template('index.html')
+
+@app.route('/home')
+def home():
+  response = requests.get(f'https://api.themoviedb.org/3/trending/all/day?api_key={API_KEY}')
+  results = response.json()
+  return render_template('home.html', results = results['results'])
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -86,7 +103,9 @@ def search():
 
 @app.route('/collections')
 def collections():
-  return render_template('collections.html', collections=movie_colls.find())
+  user = users.find_one({"email": session.get("email")})
+  user_collections = list(movie_colls.find({"user": user["_id"]}))
+  return render_template('collections.html', collections=user_collections)
 
 @app.route('/collections/new')
 def collections_new():
@@ -94,9 +113,12 @@ def collections_new():
 
 @app.route('/collections', methods=['POST'])
 def collections_submit():
+  user = users.find_one({"email": session.get("email")})
   collection = {
+    'user': user['_id'],
     'title': request.form.get('title'),
-    'description': request.form.get('description')
+    'description': request.form.get('description'),
+    'movies': []
   }
   movie_colls.insert_one(collection)
   return redirect(url_for('collections'))
@@ -127,29 +149,48 @@ def collection_update(collection_id):
     {'$set': updated_collection})
   return redirect(url_for('collection_show', collection_id=collection_id))
 
-# Overview
-movie = {'title': 'Frozen', 'overview': 'abcd', 'release_date': 'November 27, 2013', 'poster_path': '/1eQ3c443YwXz1Xq0FZ24qrJBKyd.jpg', 'genre_ids': '[53, 80]'}
-
 @app.route('/overview/<movie_title>')
 def overview(movie_title):
   title_str = create_title_str(movie_title)
-  response = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={title_str}')
-  response_data = response.json()
-
-  movie_id = response_data['results'][0]['id']
-
-  details = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}')
-  movie = details.json()
-
+  movie = get_movie_details(title_str)
+  video_id = movie['videos']['results'][0]['id']
   genres = []
   for genre in movie['genres']:
     genres.append(genre['name'])
+  return render_template('overview.html', movie=movie, genres=genres, video_id=video_id)
 
-  return render_template('overview.html', movie=movie, genres=genres)
+@app.route('/movie/<movie_title>/collections')
+def choose_collection(movie_title):
+  title_str = create_title_str(movie_title)
+  movie = get_movie_details(title_str)
+  user = users.find_one({"email": session.get("email")})
+  user_collections = list(movie_colls.find({"user": user["_id"]}))
+  
+  return render_template('choose_collection.html', movie=movie, collections=user_collections)
+
+@app.route('/movie/<movie_title>/collections/<collection_id>', methods=['GET', 'POST'])
+def add_movie(movie_title, collection_id):
+  title_str = create_title_str(movie_title)
+  movie = get_movie_details(title_str)
+
+  collection = movie_colls.find_one({'_id': ObjectId(collection_id)})
+  movies = collection['movies']
+  movies.append(movie)
+  
+  update_movies = {
+    'movies': movies
+  }
+  movie_colls.update_one(
+    {'_id': ObjectId(collection_id)},
+    {'$set': update_movies})
+  
+  return render_template('collection_show.html', collection=collection)
 
 @app.route('/user')
 def user():
-  return render_template('user.html')
+  user = users.find_one({"email": session.get("email")})
+  user_collections = list(movie_colls.find({"user": user["_id"]}))
+  return render_template('user.html', collections=user_collections)
 
 if __name__ == "__main__":
   app.run(debug=True)

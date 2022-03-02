@@ -21,18 +21,15 @@
     <title>Premiere Pal</title>
   </head>
 
-  <body class="flex flex-col bg-black/90">
+  <body class="flex h-full w-full flex-col">
     <div class="w-full h-[56px] md:h-[100px]"></div>
-    <!-- header -->
+
     {% include 'partials/header.html' %}
-    <!-- fixed header placeholder NEEDS HELP -->
-    
     <!-- main -->
-    <main class="py-5 flex w-full px-4 pb-[300px] justify-center items-center" style="font-family: sans-serif; font-weight: lighter;">
+    <main class="flex w-full bg-black/90 justify-center items-center">
       {% block content %}{% endblock %}
     </main>
-<!-- <div class="p-[4000px]">hi</div> -->
-    {% include 'partials/footer.html' %}
+
   </body>
 
   <!-- ------------------- STYLES ------------------------------------------  -->

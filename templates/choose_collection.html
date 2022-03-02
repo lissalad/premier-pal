@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<section>
+  <!-- title -->
+  <h2 class="mobile-title text-white">Choose Collection for: {{ movie.title }}</h2>
+<div>
+  <!-- back -->
+  <button href="javascript:history.back()">
+    {% include 'partials/back.html' %}
+  </button> 
+
+    <div class="flex flex-row items-start mx-2 justify-center flex-wrap md:mx-18">
+      <!-- loop through collections -->
+    {% for collection in collections %}
+    <a href="/movie/{{ movie.original_title }}/collections/{{ collection._id }}">
+      <div class="rounded bg-white/50 p-2 w-32 h-36 m-4 md:w-48">
+        <h4 class="text-3xl border-black">{{ collection.title }}</h4>
+        <p class="text-sm text-black/80">{{ collection.description }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
