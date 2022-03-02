@@ -143,8 +143,6 @@ def overview(movie_title):
   genres = []
   for genre in movie['genres']:
     genres.append(genre['name'])
-  
-  print(genres)
 
   return render_template('overview.html', movie=movie, genres=genres)
 
