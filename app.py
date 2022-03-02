@@ -19,6 +19,7 @@ movie_colls = db.movie_coll
 movies = db.movies
 
 def create_title_str(title):
+  title = title.split()
   title_str = ''
   for i in range(len(title)):
     if i == 0:
@@ -75,7 +76,7 @@ def home():
 def search():
   form = SearchForm()
   post_data = form.search.data
-  title = create_title_str(post_data.split())
+  title = create_title_str(post_data)
   response = requests.get(f'https://api.themoviedb.org/3/search/multi?api_key={API_KEY}&language=en-US&page=1&query={title}&include_adult=false')
   response_data = response.json()
   results = response_data['results']
@@ -128,17 +129,23 @@ def collection_update(collection_id):
 # Overview
 movie = {'title': 'Frozen', 'overview': 'abcd', 'release_date': 'November 27, 2013', 'poster_path': '/1eQ3c443YwXz1Xq0FZ24qrJBKyd.jpg', 'genre_ids': '[53, 80]'}
 
-@app.route('/overview')
-def overview():
-  response = requests.get(f'https://api.themoviedb.org/3/genre/movie/list?api_key={API_KEY}&language=en-US')
-  genre = response.json()
-  ids = movie['genre_ids']
+@app.route('/overview/<movie_title>')
+def overview(movie_title):
+  title_str = create_title_str(movie_title)
+  response = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={title_str}')
+  response_data = response.json()
+
+  movie_id = response_data['results'][0]['id']
+
+  details = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}')
+  movie = details.json()
+
   genres = []
-  for genre_id in ids:
-    for genre_detail in genre['genres']:
-      if genre_detail['id'] == genre_id:
-        genres.append(genre_detail['name'])
-    
+  for genre in movie['genres']:
+    genres.append(genre['name'])
+  
+  print(genres)
+
   return render_template('overview.html', movie=movie, genres=genres)
 
 @app.route('/user')
