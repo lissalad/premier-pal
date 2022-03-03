@@ -1,23 +1,21 @@
-{% extends 'base.html' %} {% block content %}
-<section class="w-full flex flex-col items-center justify-center md:flex-row md:items-center">
-  <div class="flex flex-col relative items-center -mx-5 -mt-5 ">
-    <img class="md:w-[83vh]" src="/static/images/cinema.png" />
-    <a
-      class="flex flex-col text-black top-20 absolute items-center md:top-36"
-      href="/login"
-    >
-      <img
-        class="w-16 bg-black/40 rounded-full p-2 md:w-24"
-        src="/static/icons/play.svg"
-      />
-      <p class="mt-4 text-lg md:text-2xl">Welcome!</p>
-    </a>
+{% extends 'base.html' %}
+
+{% block content %}<section>
+<div class="flex flex-col justify-center">
+  <h2 class="mobile-title text-white">Welcome!</h2>
+  <h2 class="text-center text-sm text-white">See What's Trending Today</h2>
+</div>
+<div
+class="flex flex-row justify-center flex-wrap my-3 md:justify-center md:mx-18"
+>    {% for result in results %}
+    <div class="flex flex-col items-center my-3 mx-3"> 
+    <div class="">
+      <a class="w-[120px] relative flex justify-center relative md:w-[200px]" href="/overview/{{ result['original_title'] }}"
+      ><img src="https://image.tmdb.org/t/p/original{{ result.poster_path }}"/></a>
+    </div>
   </div>
 
-  <!-- <div class="flex flex-col mt-6 w-full items-center text-white/90 px-4 md:w-fit md:-mt-40">
-    <h1 class="text-7xl ml-3 md:mb-32 md:text-[90px]">hey pal,</h1>
-    <p class="mt-9 text-3xl font-['pal'] text-right md:text-[70px] md:ml-12">Let's watch a movie!</p>
-  </div> -->
+  {% endfor %}
+</div>
 
-</section>
 {% endblock %}
