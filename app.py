@@ -8,11 +8,12 @@ import os
 import bcrypt
 
 API_KEY = os.getenv('API_KEY')
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my secret key'
 
-host = os.environ.get("DB_URL")
-client = MongoClient()
+uri = os.getenv('MONGODB_URI')
+client = MongoClient(uri)
 db = client.Premiere_PAL
 users = db.users
 movie_colls = db.movie_coll
